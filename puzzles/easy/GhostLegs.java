@@ -6,7 +6,7 @@ import java.util.Scanner;
 https://www.codingame.com/ide/puzzle/ghost-legs
  */
 public final class GhostLegs {
-    private static final String LABEL_SEPARATOR = "  ";
+    private static final String LABEL_SEPARATOR = " {2}";
 
     public static void main(final String... args) {
         final Scanner in = new Scanner(System.in);
