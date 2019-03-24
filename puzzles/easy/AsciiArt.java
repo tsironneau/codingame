@@ -2,7 +2,7 @@ package easy;
 
 import java.util.Scanner;
 
-/**
+/*
  * https://www.codingame.com/ide/puzzle/ascii-art
  */
 public final class AsciiArt {
