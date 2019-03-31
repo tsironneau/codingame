@@ -1,11 +1,13 @@
 package easy;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.IntStream;
 
 /*
-https://www.codingame.com/ide/puzzle/defibrillators
+https://www.codingame.com/training/easy/defibrillators
  */
 public final class Defibrillator {
 
@@ -17,13 +19,11 @@ public final class Defibrillator {
         final String LAT = in.next();
         final int N = in.nextInt();
         in.nextLine();
-        for (int i = 0; i < N; i++) {
-            final String DEFIB = in.nextLine();
-            DEFIBS.add(buildDefib(DEFIB));
-        }
 
-        // Write an action using System.out.println()
-        // To debug: System.err.println("Debug messages...");
+        IntStream.range(0, N).forEach(
+                i -> DEFIBS.add(buildDefib(in.nextLine()))
+        );
+
         final float longitude = Float.parseFloat(LON.replace(',', '.'));
         final float latitude = Float.parseFloat(LAT.replace(',', '.'));
 
@@ -33,16 +33,9 @@ public final class Defibrillator {
     }
 
     private static Defib findNearestDefib(final float longitude, final float latitude) {
-        double nearestDistance = Float.MAX_VALUE;
-        Defib nearestDefib = null;
-        for (final Defib defib : DEFIBS) {
-            final double distance = computeDistance(defib, longitude, latitude);
-            if (nearestDistance > computeDistance(defib, longitude, latitude)) {
-                nearestDistance = distance;
-                nearestDefib = defib;
-            }
-        }
-        return nearestDefib;
+        return DEFIBS.parallelStream()
+                .min(Comparator.comparing(a -> computeDistance(a, longitude, latitude)))
+                .orElse(null);
     }
 
     private static double computeDistance(final Defib defib, final float longitude, final float latitude) {
