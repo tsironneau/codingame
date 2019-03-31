@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 /*
-https://www.codingame.com/ide/puzzle/horse-racing-duals
+https://www.codingame.com/training/easy/horse-racing-duals
  */
 public final class HorseRace {
 

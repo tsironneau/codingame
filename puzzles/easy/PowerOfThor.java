@@ -2,6 +2,9 @@ package easy;
 
 import java.util.Scanner;
 
+/*
+https://www.codingame.com/training/easy/power-of-thor-episode-1
+ */
 public final class PowerOfThor {
 
     public static void main(final String[] args) {

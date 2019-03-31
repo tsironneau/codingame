@@ -4,7 +4,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 /*
-https://www.codingame.com/ide/puzzle/temperatures
+https://www.codingame.com/training/easy/temperatures
  */
 public final class Temperature {
 

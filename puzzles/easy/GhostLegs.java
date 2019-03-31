@@ -3,7 +3,7 @@ package easy;
 import java.util.Scanner;
 
 /*
-https://www.codingame.com/ide/puzzle/ghost-legs
+https://www.codingame.com/training/easy/ghost-legs
  */
 public final class GhostLegs {
     private static final String LABEL_SEPARATOR = " {2}";

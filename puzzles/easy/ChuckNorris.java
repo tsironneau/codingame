@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 /*
-https://www.codingame.com/ide/puzzle/chuck-norris
+https://www.codingame.com/training/easy/chuck-norris
  */
 public final class ChuckNorris {
     public static void main(final String[] args) {

@@ -3,7 +3,7 @@ package easy;
 import java.util.Scanner;
 
 /*
- * https://www.codingame.com/ide/puzzle/ascii-art
+ https://www.codingame.com/training/easy/ascii-art
  */
 public final class AsciiArt {
     private static final int a_ASCII_CODE = 97;

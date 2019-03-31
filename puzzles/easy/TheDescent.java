@@ -8,7 +8,7 @@ import java.util.Scanner;
 import java.util.stream.IntStream;
 
 /*
- * https://www.codingame.com/ide/puzzle/the-descent
+ https://www.codingame.com/training/easy/the-descent
  */
 public final class TheDescent {
     public static void main(final String[] args) {
