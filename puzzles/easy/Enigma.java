@@ -17,22 +17,24 @@ public final class Enigma {
         if (in.hasNextLine()) {
             in.nextLine();
         }
-        final String rotor1 = in.nextLine();
-        final String rotor2 = in.nextLine();
-        final String rotor3 = in.nextLine();
-
-        MAPPING = buildCharacterMapping(pseudoRandomNumber, rotor1, rotor2, rotor3);
+        final String[] rotors = new String[]{
+                in.nextLine(),
+                in.nextLine(),
+                in.nextLine()
+        };
+        MAPPING = buildCharacterMapping(pseudoRandomNumber, rotors);
 
         final String message = in.nextLine();
 
         System.out.println(applyMappingTo(message, operation));
     }
 
-    private static String buildCharacterMapping(final int pseudoRandomNumber, final CharSequence rotor1, final CharSequence rotor2, final CharSequence rotor3) {
+    private static String buildCharacterMapping(final int pseudoRandomNumber, final String[] rotors) {
         final String caesar = ALPHABET.substring(pseudoRandomNumber) + ALPHABET.substring(0, pseudoRandomNumber);
-        char[] result = applyRotor(rotor1, caesar);
-        result = applyRotor(rotor2, new String(result));
-        result = applyRotor(rotor3, new String(result));
+        char[] result = caesar.toCharArray();
+        for (final String rotor : rotors) {
+            result = applyRotor(rotor, new String(result));
+        }
         return new String(result);
     }
 
