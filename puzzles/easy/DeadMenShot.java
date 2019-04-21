@@ -3,6 +3,7 @@ package easy;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Scanner;
 
 /*
 https://www.codingame.com/training/easy/dead-mens-shot
@@ -10,34 +11,27 @@ https://www.codingame.com/training/easy/dead-mens-shot
 public final class DeadMenShot {
 
     public static void main(final String[] args) {
-//        final Scanner in = new Scanner(System.in);
-//        final int N = in.nextInt();
+        final Scanner in = new Scanner(System.in);
+        final int N = in.nextInt();
         final List<int[]> corners = new ArrayList<>();
-//        for (int i = 0; i < N; i++) {
-//            final int x = in.nextInt();
-//            final int y = in.nextInt();
-//
-//            corners.add(new int[]{x, y});
-//        }
-//        corners.add(corners.get(0));
-        corners.add(new int[]{0, 0});
-        corners.add(new int[]{100, 0});
-        corners.add(new int[]{150, 50});
-        corners.add(new int[]{100, 100});
-        corners.add(new int[]{0, 100});
-        corners.add(new int[]{0, 0});
+        for (int i = 0; i < N; i++) {
+            final int x = in.nextInt();
+            final int y = in.nextInt();
+
+            corners.add(new int[]{x, y});
+        }
+        corners.add(corners.get(0));
         corners.forEach(a -> System.err.println(Arrays.toString(a)));
-        isInTarget(corners, 150, 0);
-//        final int M = in.nextInt();
-//        for (int i = 0; i < M; i++) {
-//            final int x = in.nextInt();
-//            final int y = in.nextInt();
-//            System.err.println(x + ", " + y);
-//            if (isInTarget(corners, x, y))
-//                System.out.println("hit");
-//            else
-//                System.out.println("miss");
-//        }
+        final int M = in.nextInt();
+        for (int i = 0; i < M; i++) {
+            final int x = in.nextInt();
+            final int y = in.nextInt();
+            System.err.println(x + ", " + y);
+            if (isInTarget(corners, x, y))
+                System.out.println("hit");
+            else
+                System.out.println("miss");
+        }
     }
 
     private static boolean isInTarget(final List<int[]> corners, final int x, final int y) {
@@ -57,9 +51,8 @@ public final class DeadMenShot {
         final int[] vectAT = getVector(pointA, testedPointT);
         final int[] vectAC = getVector(pointA, pointC);
 
-        if (Arrays.equals(pointA, pointC) || Arrays.equals(pointB, pointC)) {
-            return false;
-        }
+        if (pointA[0] == pointB[0] && pointA[0] == pointC[0]) return false;
+        if (pointA[1] == pointB[1] && pointA[1] == pointC[1]) return false;
 
         final boolean b1 = det(vectAB, vectAT) * det(vectAT, vectAC) >= 0;
 
@@ -77,11 +70,7 @@ public final class DeadMenShot {
         return b1 && b2 && b3;
     }
 
-    private static double norm(final int[] vectAB) {
-        return Math.sqrt(vectAB[0] ^ 2 + vectAB[1] ^ 2);
-    }
-
-    private static int det(final int[] vector1, final int[] vector2) {
+    private static long det(final int[] vector1, final int[] vector2) {
         return vector1[0] * vector2[1] - vector1[1] * vector2[0];
     }
 
