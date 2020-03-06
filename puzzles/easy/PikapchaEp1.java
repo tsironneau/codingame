@@ -24,7 +24,7 @@ public class PikapchaEp1 {
         for (int i = 0; i < map.length; i++) {
             char[] line = map[i];
             for (int j = 0; j < line.length; j++) {
-                final var c = line[j];
+                final char c = line[j];
                 if (c == '#') continue;
                 line[j] = countNonEmptyNeighbours(i, j, map);
             }
